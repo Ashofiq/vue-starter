@@ -1,0 +1,32 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<div id="app">
+  <h1>{{ msg }}</h1>
+  <h1>{{ otherMsg }}</h1>
+  <button @click="click">Click</button>
+</div>
+
+<script>
+    const { ref } = Vue
+    const app = Vue.createApp({
+        setup() {
+            const msg = ref('hello')
+            const changeMsg = () => {
+                return 'again'
+            }
+            return { msg, changeMsg }
+        },
+        data() {
+            return {
+                otherMsg: this.changeMsg()
+            }
+        },
+        methods: {
+            click() {
+                this.msg = 'ok'     
+            },
+        },
+    })
+    app.mount('#app')
+</script>
+
+   

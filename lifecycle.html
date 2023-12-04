@@ -1,0 +1,46 @@
+<script>
+     beforeCreate() {
+      // before! observe the data and props
+      console.log("beforeCreate")
+    },
+    // observing data and props
+    // init events
+    created() {
+      console.log("created")
+      // have access to data and props
+      // good time to fetch data and manipulate data on the component
+    },
+    // check if there is an "el" option and render it.
+    // else check if there is a template and render it but not show yet.
+    beforeMount() {
+      console.log("beforeMount")
+      // finish render the template and its child component
+      // good time to manipulate data that came back from child component
+    },
+    // render the template to the real DOM
+    mounted() {
+      console.log("mounted")
+      // the template is render and printed on the real DOM
+      // if you manipulate the data here its effect on the view that already printed 
+    },
+    beforeUpdate() {
+      console.log("beforeUpdate")
+      // just before any update of the component happens
+      // good time to debug what the status before the change
+    },
+    // the update happens
+    updated() {
+      console.log("updated")
+      // good time to debug what changed
+    },
+    beforeDestroy() {
+      console.log("beforeDestroy")
+      // component before unmounted, time for update the things that happens on this component 
+    },
+    // clean all events, watchers, and child components
+    destroyed() {
+      console.log("destroyed")
+      // component unmounted, time for clean ups
+    }
+    
+</script>
