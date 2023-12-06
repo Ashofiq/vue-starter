@@ -6,3 +6,6 @@
 
 # JS Event 
 - https://www.w3schools.com/js/js_events.asp
+
+# Product Api Docs
+- https://fakestoreapi.com/docs
