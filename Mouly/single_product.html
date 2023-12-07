@@ -1,0 +1,118 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+        href="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+        rel="stylesheet"
+        id="bootstrap-css"
+        />
+        <title>Single Product</title>
+        <link rel="stylesheet" href="singleproduct .css" />
+        <link
+        href="https:maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet"
+        />
+        <link
+        href="https:fonts.googleapis.com/css?family=Open+Sans:400,700"
+        rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                <div class="preview-pic tab-content">
+                    <div class="tab-pane active mt-5" id="pic-1">
+                    <img src="" id="product-image" />
+                    </div>
+                </div>
+                </div>
+                <div class="details col-md-6">
+                <h3 class="product-title" id="product-title">
+                    men's shoes fashion
+                </h3>
+                <div class="rating-product" id="rating-product">
+                    <div class="stars">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    </div>
+                    <span class="review-no">41 reviews</span>
+                </div>
+                <h4 class="product-description" id="product-description">
+                    
+                </h4>
+
+                <h4 class="product-category" id="product-category"></h4>
+                
+
+                <h4 class="product-price">
+                    current price:BDT <span id="product-price"></span>
+                </h4>
+                <p class="product-vote" id="product-vote">
+                    <strong>91%</strong> of buyers enjoyed this product!
+                    <strong>(87 votes)</strong>
+                </p>
+                <h5 class="sizes">
+                    sizes:
+                    <span class="size" data-toggle="tooltip" title="small">s</span>
+                    <span class="size" data-toggle="tooltip" title="medium">m</span>
+                    <span class="size" data-toggle="tooltip" title="large">l</span>
+                    <span class="size" data-toggle="tooltip" title="xtra large"
+                    >xl</span
+                    >
+                </h5>
+                <h5 class="colors">
+                    colors:
+                    <span
+                    class="color red not-available"
+                    data-toggle="tooltip"
+                    title="Not In store"
+                    ></span>
+                    <span class="color green"></span>
+                    <span class="color blue"></span>
+                </h5>
+                <div class="action">
+                    <button class="add-to-cart btn btn-default" type="button">
+                    add to cart
+                    </button>
+                    <button class="like btn btn-default" type="button">
+                    <span class="fa fa-heart"></span>
+                    </button>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </body>
+    <script src="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>
+        function getPeram(query) {
+        const product_id = new URL(window.location.href).searchParams;
+        return product_id.get(query);
+        }
+        var product_id = getPeram("id");
+        console.log(product_id);
+        fetch("https://fakestoreapi.com/products/" + product_id)
+        .then((res) => res.json())
+        .then((product ) => {    //respomse variable
+            console.log("product", product);
+            document.getElementById("product-title").innerHTML = product.title; //dynamic value
+            document.getElementById("product-price").innerHTML = product.price;
+            document.getElementById("product-category").innerHTML =
+            product.category;
+            document.getElementById("product-description").innerHTML =
+            product.description;
+            document.getElementById("product-image").setAttribute('src', product.image,)
+        
+        });
+    </script>
+    </html>

@@ -1,0 +1,87 @@
+<h1>Nogor Solution</h1>
+
+    
+<form action="" onsubmit="validateForm(event)">
+  <script>
+    function validateForm(e){
+      e.preventDefault();
+      
+      var fname = document.getElementById("fname").value;
+      var lname = document.getElementById("lname").value;
+      var phone = document.getElementById("phone").value;
+      var email = document.getElementById("email").value;
+      var gender = document.getElementById("gender").value;
+      var area = document.getElementById("area").value;
+      console.log(fname, lname, phone, email, gender, area);
+    
+      if(fname == ""){
+        document.getElementById("err_fname").innerHTML ='First name is required'
+      }
+      if(lname == ""){
+        document.getElementById("err_lname").innerHTML ='Last name is required'
+      }
+      if(phone == ""){
+        document.getElementById("err_phone").innerHTML ='phone is required'
+      }
+      if(email == ""){
+        document.getElementById("err_email").innerHTML ='email is required'
+      }
+      if(gender == ""){
+        document.getElementById("err_gender").innerHTML ='gender is required'
+      }
+      if(area == ""){
+        document.getElementById("err_area").innerHTML ='area is required'
+      }
+
+      return false;
+
+    }
+    </script>
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value=""  placeholder="Write here your First name"><br>
+  <small id="err_fname"></small>
+<br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value=""  placeholder="Write here your Last name"><br><br>
+  <small id="err_lname"></small>
+  <br>
+
+    <label for="phone">Enter your phone number:</label><br>
+    <input type="tel" id="phone" name="phone" placeholder="013-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" ><br><br>
+    <small id="err_phone"></small>
+    <br>
+
+    <label for="email">Enter your email:</label>
+    <input type="email" id="email" name="email" >
+    <small id="err_email"></small>
+  <br>
+
+<p2>Gender:</p2>
+<br>
+  <input type="radio" id="gender" name="fav_language" value="MALE">
+  <label for="male">MALE</label><br>
+  <input type="radio" id="gender" name="fav_language" value="FEMMALE">
+  <label for="female">FEMALE</label><br>
+<small id="err_gender"></small>
+<br>
+<br>
+    <label for="area">District:</label>
+    <select id="area" name="area">
+      <option value="dhaka">Dhaka</option>
+      <option value="sylet">Sylet</option>
+      <option value="rangpur">Rangpur</option>
+      <option value="rajshahi">Rajshahi</option>
+      <option value="chittagong">Chittagong</option>
+      <option value="chandpur">Chandpur</option>
+      <small id="err_area"></small>
+    </select>
+  <br>
+  <br>
+<input type="submit" value="Submit">
+<script>
+  // document.getElementById("title").innerHTML
+</script>
+</form>
+
+
+    
