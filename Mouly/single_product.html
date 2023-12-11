@@ -35,7 +35,7 @@
                 <h3 class="product-title" id="product-title">
                     men's shoes fashion
                 </h3>
-                <div class="rating-product" id="rating-product">
+                <div class="rating">
                     <div class="stars">
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -43,11 +43,14 @@
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
                     </div>
-                    <span class="review-no">41 reviews</span>
+                    <span class="review-no">Reviews</span>
                 </div>
                 <h4 class="product-description" id="product-description">
                     
                 </h4>
+                <p class="product-vote">
+                    Rating: <strong id="rating-product"></strong>
+                </p>
 
                 <h4 class="product-category" id="product-category"></h4>
                 
@@ -107,11 +110,10 @@
             console.log("product", product);
             document.getElementById("product-title").innerHTML = product.title; //dynamic value
             document.getElementById("product-price").innerHTML = product.price;
-            document.getElementById("product-category").innerHTML =
-            product.category;
-            document.getElementById("product-description").innerHTML =
-            product.description;
-            document.getElementById("product-image").setAttribute('src', product.image,)
+            document.getElementById("rating-product").innerHTML = product.rating.rate;
+            document.getElementById("product-category").innerHTML = product.category;
+            document.getElementById("product-description").innerHTML = product.description;
+            document.getElementById("product-image").setAttribute('src', product.image)
         
         });
     </script>
