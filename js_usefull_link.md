@@ -9,3 +9,6 @@
 
 # Product Api Docs
 - https://fakestoreapi.com/docs
+
+# Auth API 
+- https://dummyjson.com/docs/auth
