@@ -2,28 +2,152 @@
 <div id="app">
   <h1>{{ msg }}</h1>
   <h1>{{ otherMsg }}</h1>
+  <h1>{{ title }}</h1>
+
+
+  
+  <img v-bind:src="src" alt="">
+
+ <a v-bind:href="link">Learn view</a>
+ 
+ <!-- for hide and show -->
+<p v-show="available">Available</p>
+ <p v-show="!available">Not available</p>
+
+ <p v-text="message"></p>
+ <p v-html="htmlElement"></p>
+ <p v-if="condition">Pinky valo</p>
+ <p v-else>Ponky kharp</p>
+ <input type="text" v-model="input">
+ <p >{{input}}</p>
+
+ <!-- looping -->
+
+ <div v-for="item in items">
+    {{item}}
+ </div>
+
+ <ul>
+    <li v-for="num in 10">{{num}}</li>
+ </ul>
+ <ul>
+    <li v-for="user in userdetails">{{user}}</li>
+ </ul>
+ <ul>
+    <li v-for="(user, key) in student">
+        {{user.name}}-{{user.roll}}
+    </li>
+ </ul>
+
+
+<label for="">Name:</label>
+        <input  type="text" v-model="search" />
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="user in findStudent() ">
+              <td>{{user.name}}-{{user.age}}</td>
+            
+            </tr>
+           
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+
+
+
+  <br>
+  <br>
   <button @click="click">Click</button>
+
+  
+  <br>
+  <br>
 </div>
 
 <script>
     const { ref } = Vue
     const app = Vue.createApp({
+
+       
         setup() {
             const msg = ref('hello')
+            
             const changeMsg = () => {
                 return 'again'
             }
             return { msg, changeMsg }
         },
         data() {
+         
             return {
+                src:"https://picsum.photos/200/300?grayscale",
+                title:"image",
+                link: "https://vuejs.org",
+                available: true,
+                message:"Hello World",
+                htmlElement:'<p style="color:red"> Hello again </p>',
+                condition:"conditions",
+                input:"Kacchi vai",
+                items:['a','b','c','d'],
+                student:[
+                    {
+                        name:'rimi',
+                        roll:'34'
+                    },
+                    {
+                        name:'mouly',
+                        roll:'43'
+                    },
+                    
+                  
+                    
+                ],
+                search:"",
+
+                student: [
+            { name: "shofiq", age: 25 },
+            { name: "habib", age: 23 },
+            { name: "john", age: 30 },
+            { name: "jane", age: 28 },
+            { name: "alice", age: 22 },
+            { name: "bob", age: 27 },
+            { name: "emily", age: 29 },
+            { name: "peter", age: 26 },
+            { name: "sara", age: 24 },
+            { name: "michael", age: 31 },
+                ],
+                userdetails:{
+                    Firstname:'pinky',
+                    lastname:'akter',
+                    age:'34'
+                },
                 otherMsg: this.changeMsg()
             }
         },
+        
+        input_age:0,
         methods: {
             click() {
-                this.msg = 'ok'     
+                // this.otherMsg = 'ok'     
+                this.msg = 'ok'
+                this.setvalue()    
             },
+            setvalue(){
+                this.otherMsg='Rimi'
+            },
+
+            findStudent(){
+return this.student.filter((info)=>
+info.name == this.search)
+            },
+
+
         },
     })
     app.mount('#app')
