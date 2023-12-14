@@ -1,0 +1,50 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <div id="mouly">
+            <p v-html="HTMLElement"></p>
+            <h1 ref="num" >{{count}}</h1>
+            <button v-on:click="count=count+1">update</button>
+    </div>
+    
+<script>
+    const { ref } = Vue
+    const app = Vue.createApp({
+        setup() {
+        },
+
+        beforeCreate() {
+            alert("HUHUH")
+            console.log("beforeCreate");
+        },
+        created() {
+            alert("ohhh Accha")
+            console.log("created");
+        },
+        beforeMount() {
+            alert("heyyyy")
+            console.log("beforeMount", this.$el);
+        },
+        mounted() {
+            alert("byeee")
+          console.log("mounted", this.$el);  
+        },
+        beforeUpdate() {
+           
+            console.log("beforeUpdate", this.$refs['num'].textcontent);
+        },
+        updated() {
+            console.log("updated", this.$refs['num'].textcontent);
+        },
+
+
+        data() {
+            return {
+                HTMLElement: '<h1 style="color:blue">Bangladesh Navy</h1>',
+                count:0,
+            }
+        },
+        methods: {
+           
+        },
+    })
+    app.mount('#mouly')
+</script>
