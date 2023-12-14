@@ -3,99 +3,116 @@
     <h1>{{ msg }}</h1>
     <h1>{{ otherMsg }}</h1>
     <button @click="click">Click</button>
+    <div><button v-on:click="count+=2">Increment</button>
+        <button v-on:click="count--">Decrement</button>
+        <h2>{{count}}</h2>
+    </div>
+    <div>
+        <button v-on:click="Notification">Alert</button>
+    </div>
+    <p>
+        {{number<22? "boyosh hoise" :"boyosh hoinai"}} </p>
 
-    <p v-show="available">valo asi</p>
-    <p v-show="!available">Sukhe nai</p>
-    <img v-bind:src="picture" alt="" srcset="">
-    <div><a v-bind:href="link">google</a></div>
-    <p v-text="message"></p>
-    <p v-html="HTMLElement"></p>
-    <p v-for="item in items">
-        {{item}}
-    </p>
-    <input type="text" v-model="input">
-    <p>{{input}}</p>
+            <p v-show="available">valo asi</p>
+            <p v-show="!available">Sukhe nai</p>
+            <img v-bind:src="picture" alt="" srcset="">
+            <div><a v-bind:href="link">google</a></div>
+            <p v-text="message"></p>
+            <p v-html="HTMLElement"></p>
+            <p v-for="item in items">
+                {{item}}
+            </p>
+            <input type="text" v-model="input">
+            <p>{{input}}</p>
 
-    <div v-if="otherMsg">Stuff</div>
-    <div v-else>Smth else</div>
+            <div v-if="otherMsg">Stuff</div>
+            <div v-else>Smth else</div>
 
-    <!-- <label for="dataArray">Name:</label>
-    <input v-model="nothing" type="text" /> -->
-<input v-model="nothing" type="text">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="item in searchdata()">
-                
-                <td>{{item.name}}</td>
-                <td>{{item.age}}</td>
-            </tr>
+            <input v-model="nothing" type="text">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in searchdata()">
 
-        </tbody>
-    </table>
+                        <td>{{item.name}}</td>
+                        <td>{{item.age}}</td>
+                    </tr>
 
-    <script>
-        const { ref } = Vue
-        const app = Vue.createApp({
-            setup() {
-                const msg = ref('hello')
-                const changeMsg = () => {
-                    return 'again'
-                }
-                return { msg, changeMsg }
-            },
+                </tbody>
+            </table>
+
+            <script>
+                const { ref } = Vue
+                const app = Vue.createApp({
+                    setup() {
+                        const msg = ref('hello')
+                        const changeMsg = () => {
+                            return 'again'
+                        }
+                        return { msg, changeMsg }
+                    },
 
 
-            data() {
-                return {
-                    otherMsg: this.changeMsg(),
+                    data() {
+                        return {
+                            otherMsg: this.changeMsg(),
 
-                    available: false,
-                    picture: "https://picsum.photos/200/300",
-                    link: "https://www.google.com/",
-                    message: "kaoke kacci dibo na",
-                    HTMLElement: '<p style="color:pink">Hello Pinky</p>',
-                    items: ['a', 'b', 'c'],
-                    input: "bia kora ucit",
-                    nothing: 0,
-                    dataArray: [
-                        { name: "shofiq", age: 25 },
-                        { name: "habib", age: 23 },
-                        { name: "john", age: 30 },
-                        { name: "jane", age: 28 },
-                        { name: "alice", age: 22 },
-                        { name: "bob", age: 27 },
-                        { name: "emily", age: 29 },
-                        { name: "peter", age: 26 },
-                        { name: "sara", age: 24 },
-                        { name: "michael", age: 31 },
-                    ],
-                    
-                }
-            },
-            methods: {
-                click() {
-                    this.msg = 'ok'
-                    this.setvalue()
-                },
+                            number: 23,
+                            count: 0,
+                            available: false,
+                            picture: "https://picsum.photos/200/300",
+                            link: "https://www.google.com/",
+                            message: "kaoke kacci dibo na",
+                            HTMLElement: '<h1 style="color:green">Hello Pinky</h1>',
+                            items: ['a', 'b', 'c'],
+                            input: "aghsvdiaucit",
+                            nothing: "",
+                            dataArray: [
+                                { name: "shofiq", age: 25 },
+                                { name: "habib", age: 23 },
+                                { name: "john", age: 23 },
+                                { name: "jane", age: 23 },
+                                { name: "alice", age: 22 },
+                                { name: "bob", age: 27 },
+                                { name: "emily", age: 29 },
+                                { name: "peter", age: 26 },
+                                { name: "sara", age: 24 },
+                                { name: "michael", age: 31 },
+                            ],
 
-                setvalue() {
-                    this.otherMsg = 'mouly'
-                },
+                        }
+                    },
+                    methods: {
+                        click() {
+                            this.msg = 'ok'
+                            this.setvalue()
+                        },
 
-                searchdata() {
-                    return this.dataArray.filter((info)=>
-                    info.age==this.nothing
-                    );
-                },
-            },
+                        setvalue() {
+                            this.otherMsg = 'mouly'
+                        },
 
-        })
+                        searchdata() {
+                            if (this.nothing != '') {
+                                return this.dataArray.filter((info) =>
+                                    info.age && info.name == this.nothing);
+                            }
+                            else {
+                                return this.dataArray
+                            }
+                        },
 
-        app.mount('#app')
-    </script>
+                        Notification() {
+                            alert("ki chan jibon theke?")
+                        },
+                    },
+
+                })
+
+                app.mount('#app')
+            </script>
