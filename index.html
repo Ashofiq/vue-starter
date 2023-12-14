@@ -1,32 +1,119 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 <div id="app">
-  <h1>{{ msg }}</h1>
-  <h1>{{ otherMsg }}</h1>
-  <button @click="click">Click</button>
-</div>
+    <h1>{{ msg }}</h1>
+    <h1>{{ otherMsg }}</h1>
+    <H1>My name:{{name}}</H1>
+    <!-- <H2>{{age}}</H2> -->
+    <img v-bind:src="Image">
+    <br>
+    <h2>
+        <p>my age:{{age}}</p>
+    </h2>
+    <!-- <div v-show="available">Stuff</div> -->
+    <input v-model="name" />
+    <input v-model="age">
 
+    <h5>
+        <p v-for="friend in friends">
+            {{friend}}
+        </p>
+    </h5>
+
+    <h3>
+        <div v-if="age<27">young</div>
+
+        <div v-else>buro</div>
+    </h3>
+
+    <label for="">search:</label>
+
+    <input v-model="search" type="text">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="item in searchdata()">
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+
+            </tr>
+
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <h3>
+        <span v-text="university"></span>
+    </h3>
+    <span v-html="name"></span>
+    <br>
+
+    <button @click="click">Click</button>
+</div>
 <script>
     const { ref } = Vue
     const app = Vue.createApp({
         setup() {
             const msg = ref('hello')
             const changeMsg = () => {
-                return 'again'
+                return 'boss'
             }
+
             return { msg, changeMsg }
         },
         data() {
             return {
-                otherMsg: this.changeMsg()
+                otherMsg: this.changeMsg(),
+                name: "shafayet",
+                age: '24',
+                university: 'AIUB',
+                Image: "https://picsum.photos/200",
+                friends: ['mehedi', 'mouly', 'rimi'],
+                search: "",
+
+                information: [
+                    { name: "shofiq", age: 25 },
+                    { name: "habib", age: 23 },
+                    { name: "john", age: 30 },
+                    { name: "jane", age: 28 },
+                    { name: "alice", age: 22 },
+                    { name: "bob", age: 27 },
+                    { name: "emily", age: 29 },
+                    { name: "peter", age: 29 },
+                    { name: "sara", age: 29 },
+                    { name: "shehab", age: 24 },
+                ],
+
+
             }
         },
+
         methods: {
             click() {
-                this.msg = 'ok'     
+                this.otherMsg = 'ok',
+                    this.msg = 'hlw',
+                    this.setvalue()
             },
+
+            searchdata() {
+                return this.information.filter((info) =>
+                    info.name == this.search
+
+                );
+            },
+
+            setvalue() {
+                this.otherMsg = 'shehab',
+                    this.age = '27'
+                this.university = 'IUBAT'
+
+            }
+
+
         },
     })
     app.mount('#app')
 </script>
-
-   
