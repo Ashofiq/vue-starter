@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Nagordola</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <form id="form">
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="fname">First name</label>
+                        <input v-model="data.fname" type="text" id="fname" class="form-control" />
+                        <small style="color: brown;" id="err_firstname"></small>
+                    </div>
+                    
+                </div>
+                <div class="col">
+                    <div data-mdb-input-init class="form-outline">
+                        <label class="form-label" for="lname">Last name</label>
+                        <input type="text" id="lname" class="form-control" />
+                       <small style="color: brown;" id="err_lastname"></small>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="email">Email address</label>
+                <input type="email" id="email" class="form-control" />
+                <small style="color: brown;" id="err_email"></small>
+            </div>
+            
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" id="password" class="form-control" />
+                <small style="color: brown;" id="err_password"></small>
+            </div>
+            
+            <!-- date of birth -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="date">Date Of Birth</label>
+                <input type="date" id="date" class="form-control" />
+                <small style="color: brown;" id="err_date"></small>
+            </div>
+            
+            <!-- Gender -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <strong class="form-label" for="gender">Gender</strong>
+                <input type="radio" id="gender" name="fav_language" value="Men">
+                  <label for="Men">Men</label>
+                  <input type="radio" id="gender" name="fav_language" value="Women">
+                  <label for="Women">Women</label>
+                <small style="color: brown;" id="err_gender"></small>
+            </div>
+            
+            <!-- Address -->
+            <div data-mdb-input-init class="form-outline mb-4"></div>
+            <label class="form-label" for="area">Address</label>
+            <select id="area" name="area">
+                <option value="">Choose Address</option>
+                <option value="dhaka">Dhaka</option>
+                <option value="sylet">Sylet</option>
+                <option value="rangpur">Rangpur</option>
+                <option value="rajshahi">Rajshahi</option>
+                <option value="chittagong">Chittagong</option>
+                <option value="chandpur">Chandpur</option>
+            </select>
+            <br>
+            <small style="color: brown;" id="err_area"></small>
+            
+            <!-- commentbox -->
+            <div>
+                <div data-mdb-input-init class="form-outline mb-4"></div>
+                <strong class="form-label"  for="comment">Drop your comment</strong>
+                <br>
+                <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
+
+            </div>
+            <small style="color: brown;" id="err_comment"></small>
+            
+            <!-- Checkbox -->
+            <br>
+            <br>
+            <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                <label class="form-check-label" for="form2Example33">
+                    Subscribe to our newsletter
+                </label>
+            </div>
+            
+            <!-- Submit button -->
+            <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+
+        </form>
+    </div>
+<!-- cdn -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+    <script>
+        var form= document.getElementById('form')
+
+        form.addEventListener('submit',function(event){
+            event.preventDefault();
+            
+            var firstname=document.getElementById('fname').value
+            console.log(firstname)
+            if(firstname==''){
+                document.getElementById("err_firstname").innerHTML='*first name required*';
+            //    alert(" Firstname feild empty") 
+            }
+
+            var lastname = document.getElementById('lname').value
+            console.log(lastname)
+            if (lastname == '') {
+                document.getElementById("err_lastname").innerHTML = '*last name required*';
+                // alert(" lastname feild empty")
+            }
+
+            var email = document.getElementById('email').value
+            console.log(email)
+            if (email == '') {
+                document.getElementById("err_email").innerHTML = '*email required*';
+                // alert(" email feild empty")
+            }
+
+            var password = document.getElementById('password').value
+            console.log(password)
+            if (password == '') {
+                document.getElementById("err_password").innerHTML = '*password required*';
+                // alert(" password feild empty")
+            }
+
+            var date = document.getElementById('date').value
+            console.log(date)
+            if (date == '') {
+                document.getElementById("err_date").innerHTML = '*date required*';
+                // alert(" date feild empty")
+            }
+
+            var gender = document.getElementById('gender').value
+            console.log(gender)
+            if (gender == '') {
+                document.getElementById("err_gender").innerHTML = '*gender required*';
+                // alert(" gender feild empty")
+            }
+
+            var area = document.getElementById('area').value
+            console.log(area)
+            if (area == '') {
+                document.getElementById("err_area").innerHTML = '*adress required*';
+                // alert(" area feild empty")
+            }
+
+            var comment = document.getElementById('comment').value
+            console.log(comment)
+            if (comment == '') {
+                document.getElementById("err_comment").innerHTML = '*comment required*';
+                // alert(" comment feild empty")
+            }
+
+
+
+
+        })
+    </script>
+
+</body>
+
+</html>
