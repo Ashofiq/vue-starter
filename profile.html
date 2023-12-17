@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 5 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  
+<div class="container mt-5">
+ <form id="form" >
+
+  <!-- 2 column grid layout with text inputs for the first and last names -->
+  <div class="row mb-4">
+    <div class="col">
+      <div data-mdb-input-init class="form-outline">
+        <label class="form-label" for="firstname1">First name</label>
+        <input name="firstname" type="text" id="firstname1" class="form-control"  />
+       </div>
+       <small style="color: red;" id="err_firstname"></small>
+
+    </div>
+    <div class="col">
+      <div data-mdb-input-init class="form-outline">
+        <label class="form-label" for="lastname1">Last name</label>
+        <input name="lastname" type="text" id="lastname1" class="form-control"  />
+      
+      </div>
+      <small style="color: red;" id="err_lastname"></small>
+    </div>
+  </div>
+
+  <!-- Email input -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <label class="form-label" for="email1">Email address</label>
+    <input name="email" type="email" id="email1" class="form-control" />
+    <small style="color: red;" id="email"></small>
+  </div>
+
+
+  <!-- Password input -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <label class="form-label" for="password1">Password</label>
+    <input name="password" type="password" id="password1" class="form-control" />
+    <small style="color: red;" id="password"></small>
+   
+  </div>
+
+  <!-- Date of birth -->
+
+  <div data-mdb-input-init class="form-outline mb-4">
+    <label class="form-label" for="dob1">Date of Birth</label>
+    <input name="dob" type="date" id="dob1" class="form-control" />
+    <small style="color: red;" id="dob"></small>
+    
+  </div>
+
+  <!-- Address -->
+
+<div>
+    <select name="address" class="form-select" id="address1" aria-label="Default select example">
+        <option value="">Select Address</option>
+        <option value="Dhaka">Dhaka</option>
+        <option value="Khulna">Khulna</option>
+        <option value="Borishal">Borishal</option>
+        <option value="Rajshahi">Rajshahi</option>
+        <option value="Shylet">Shylet</option>
+        <option value="Shylet">Shylet</option>
+         </select>
+<br>
+         <small style="color: red;" id="address"></small>
+</div>
+     
+  <br>
+  <br>
+  <br>
+  <p>Select Gender</p>
+
+  <!-- Gender -->
+
+<div data-mdb-input-init class="form-outline mb-4" >
+    <input type="radio" id="gender1" name="gender" value="man">
+    <label for="gender">Male</label><br>
+    <input type="radio" id="gender1" name="gender" value="woman">
+    <label for="gender">Female</label><br>
+    <small style="color: red;" id="gender"></small>
+</div>
+
+
+<!-- comments -->
+
+<div data-mdb-input-init class="form-outline mb-4">
+    <label for="comment1">Add a comment :</label>
+   
+    <br>
+    
+<textarea id="comment1"  name="comment" rows="4" cols="50"></textarea>
+
+</div>
+<small style="color: red;" id="comment"></small>
+<br>
+<br>
+
+
+
+
+  <!-- Checkbox -->
+  <!-- <div class="form-check d-flex justify-content-center mb-4">
+    <input class="form-check-input me-2" type="checkbox" value="1" name="check" id="check1" checked />
+    <label class="form-check-label" for="check1">
+      Subscribe to our newsletter
+    </label>
+  </div> -->
+
+  <!-- Submit button -->
+  <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+
+  <!-- Register buttons -->
+  <!-- <div class="text-center">
+    <p>or sign up with:</p>
+    <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
+      <i class="fab fa-facebook-f"></i>
+    </button>
+
+    <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
+      <i class="fab fa-google"></i>
+    </button>
+
+    <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
+      <i class="fab fa-twitter"></i>
+    </button>
+
+    <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
+      <i class="fab fa-github"></i>
+    </button>
+  </div> -->
+</form>
+</div>
+<!-- cdn -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script>
+    var form= document.getElementById('form')
+    form.addEventListener('submit',function(event){
+        event.preventDefault()
+
+        var firstname= document.getElementById('firstname1').value
+        console.log('firstname:',firstname)
+        if(firstname==''){
+            document.getElementById('err_firstname').innerHTML='first name required';
+        }
+
+
+        var lastname= document.getElementById('lastname1').value
+        console.log('lastname:',lastname)
+        if(lastname==''){
+            document.getElementById('err_lastname').innerHTML='last name required';
+        }
+
+        var email= document.getElementById('email1').value
+        console.log('email:',email)
+        if(email==''){
+            document.getElementById('email').innerHTML='email is required';
+        }
+
+        var password= document.getElementById('password1').value
+        console.log('password:',password)
+        if(password==''){
+            document.getElementById('password').innerHTML='password is required';
+        }
+
+        var dob= document.getElementById('dob1').value
+        console.log('dob:',dob)
+        if(dob==''){
+            document.getElementById('dob').innerHTML='dob is required';
+        }
+
+        var address= document.getElementById('address1').value
+        console.log('address:',address)
+        if(address==''){
+            document.getElementById('address').innerHTML='address is required';
+        }
+
+        var gender= document.getElementById('gender1').value
+        console.log('gender:',gender)
+        if(gender==''){
+            document.getElementById('gender').innerHTML='gender is required';
+        }
+
+        var comment= document.getElementById('comment1').value
+        console.log('comment:',comment)
+        if(comment==''){
+            document.getElementById('comment').innerHTML='comment is required';
+        }
+
+
+
+        
+
+//         if(firstname==''){
+
+// document.getElementById('form3Example1').classList.add('border-danger');
+
+          
+       
+      
+        
+//         }else{
+//             setSuccess(firstname)
+//         }
+
+
+    
+     
+            // if(token){
+            //     document.getElementById('form3Example1').classList.add('border-success');
+            //     document.getElementById('form3Example2').classList.add('border-success');
+            // }else{
+            //     document.getElementById('form3Example1').classList.add('border-danger');
+            //     document.getElementById('form3Example2').classList.add('border-danger');
+
+            // }
+        });
+
+    
+</script>
+</body>
+</html>

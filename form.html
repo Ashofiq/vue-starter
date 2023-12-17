@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 5 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  
+<div class="container mt-5" id="app">
+ <form id="form" @submit.prevent="submitdata">
+
+  <!-- 2 column grid layout with text inputs for the first and last names -->
+  <div class="row mb-4">
+    <div class="col">
+      <div data-mdb-input-init class="form-outline">
+        <label class="form-label" for="firstname1">First name</label>
+        <input :class="errors.firstname != undefined? 'border-danger': '' " v-model="formdata.firstname"  name="firstname" type="text" id="firstname1" class="form-control"  />
+       </div>
+       <small v-if="errors.firstname" class="text-danger">{{errors.firstname}}</small>
+
+    </div>
+    <div class="col">
+      <div data-mdb-input-init class="form-outline">
+        <label class="form-label" for="lastname1">Last name</label>
+        <input :class="errors.lastname != undefined? 'border-danger': '' " v-model="formdata.lastname" name="lastname" type="text" id="lastname1" class="form-control"  />
+      
+      </div>
+      <small v-if="errors.lastname " class="text-danger">{{errors.lastname}}</small>
+    </div>
+  </div>
+
+  <!-- Email input -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <label class="form-label" for="email1">Email address</label>
+    <input :class="errors.lastname != undefined? 'border-danger': '' " v-model="formdata.email" name="email" type="email" id="email1" class="form-control" />
+    <small v-if="errors.lastname" class="text-danger">{{errors.email}}</small>
+  </div>
+
+
+  <!-- Password input -->
+  <div data-mdb-input-init class="form-outline mb-4">
+    <label class="form-label" for="password1">Password</label>
+    <input :class="errors.password != undefined? 'border-danger': '' " v-model="formdata.password" name="password" type="password" id="password1" class="form-control" />
+    <small v-if="errors.lastname" class="text-danger">{{errors.password}}</small>
+   
+  </div>
+
+  <!-- Date of birth -->
+
+  <div data-mdb-input-init class="form-outline mb-4">
+    <label class="form-label" for="dob1">Date of Birth</label>
+    <input :class="errors.dob != undefined? 'border-danger': '' " v-model="formdata.dob" name="dob" type="date" id="dob1" class="form-control" />
+    <small v-if="errors.dob" class="text-danger">{{errors.dob}}</small>
+    
+  </div>
+
+  <!-- Address -->
+
+<div>
+    <select :class="errors.address != undefined? 'border-danger': '' " v-model="formdata.address" name="address" class="form-select" id="address1" aria-label="Default select example">
+        <option value="">Select Address</option>
+        <option value="Dhaka">Dhaka</option>
+        <option value="Khulna">Khulna</option>
+        <option value="Borishal">Borishal</option>
+        <option value="Rajshahi">Rajshahi</option>
+        <option value="Shylet">Shylet</option>
+        <option value="Shylet">Shylet</option>
+         </select>
+<br>
+         <small v-if="errors.address" class="text-danger">{{errors.address}}</small>
+</div>
+     
+  <br>
+  <br>
+  <br>
+  <p>Select Gender</p>
+
+  <!-- Gender -->
+
+<div data-mdb-input-init class="form-outline mb-4" >
+    <input v-model="formdata.gender" type="radio" id="gender1" name="gender" value="man">
+    <label for="gender">Male</label><br>
+    <input  v-model="formdata.gender" type="radio" id="gender1" name="gender" value="woman">
+    <label for="gender">Female</label><br>
+    <small v-if="errors.gender" class="text-danger">{{errors.gender}}</small>
+</div>
+
+
+<!-- comments -->
+
+<div data-mdb-input-init class="form-outline mb-4">
+    <label for="comment1">Add a comment :</label>
+   
+    <br>
+    
+<textarea :class="errors.comment != undefined? 'border-danger':''" v-model="formdata.comment" id="comment1"  name="comment" rows="4" cols="50"></textarea>
+
+</div>
+<small v-if="errors.comment" class="text-danger">{{errors.comment}}</small>
+<br>
+<br>
+
+
+
+
+  <!-- Checkbox -->
+  <!-- <div class="form-check d-flex justify-content-center mb-4">
+    <input class="form-check-input me-2" type="checkbox" value="1" name="check" id="check1" checked />
+    <label class="form-check-label" for="check1">
+      Subscribe to our newsletter
+    </label>
+  </div> -->
+
+  <!-- Submit button -->
+  <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+
+  <!-- Register buttons -->
+  <!-- <div class="text-center">
+    <p>or sign up with:</p>
+    <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
+      <i class="fab fa-facebook-f"></i>
+    </button>
+
+    <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
+      <i class="fab fa-google"></i>
+    </button>
+
+    <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
+      <i class="fab fa-twitter"></i>
+    </button>
+
+    <button data-mdb-ripple-init type="button" class="btn btn-secondary btn-floating mx-1">
+      <i class="fab fa-github"></i>
+    </button>
+  </div> -->
+</form>
+</div>
+<!-- cdn -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script>
+    const { ref } = Vue
+    const app = Vue.createApp({
+        setup() {
+         
+        },
+        data() {
+            return {
+             formdata:{
+                firstname:"",
+                lastname:"",
+                password:"",
+                email:"",
+                dob:"",
+                address:"",
+                gender:"",
+                comment:"",
+             },
+
+             errors:{}
+            }
+        },
+        methods: {
+          submitdata(){
+            console.log(this.formdata.firstname);
+            console.log(this.formdata.lastname);
+            console.log(this.formdata.email);
+            console.log(this.formdata.password);
+            console.log(this.formdata.dob);
+            console.log(this.formdata.address);
+            console.log(this.formdata.gender);
+            console.log(this.formdata.comment);
+
+            this.vadidate();
+          },
+          
+          vadidate(){
+                if(this.formdata.firstname == ""){this.errors.firstname="Firstname is required"}
+                if(this.formdata.lastname == ""){this.errors.lastname="Lastname is required"}
+                if(this.formdata.email == ""){this.errors.email="Email is required"}
+                if(this.formdata.password == ""){this.errors.password="Password is required"}
+                if(this.formdata.dob == ""){this.errors.dob="Date of birth is required"}
+                if(this.formdata.address == ""){this.errors.address="Address is required"}
+                if(this.formdata.gender == ""){this.errors.gender="Gender is required"}
+                if(this.formdata.comment == ""){this.errors.comment="Comment is required"}
+          }
+          
+        }
+    })
+    app.mount('#app')
+</script>
+</body>
+</html>

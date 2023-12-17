@@ -1,14 +1,18 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 <div id="app">
+    <button v-on:click="hello">Alert</button>
   <h1>{{ msg }}</h1>
   <h1>{{ otherMsg }}</h1>
   <h1>{{ title }}</h1>
 
+  <p >{{number>5? "big" : "small"}}</p>
 
-  
+<button class="btn btn-primary" v-on:click="count++">Increment</button>
+<button class="btn btn-danger" v-on:click="count--">Decrement</button>
+  <h2>{{count}}</h2>
   <img v-bind:src="src" alt="">
 
- <a v-bind:href="link">Learn view</a>
+ <a v-bind:href="link" >Learn view</a>
  
  <!-- for hide and show -->
 <p v-show="available">Available</p>
@@ -68,6 +72,10 @@
   
   <br>
   <br>
+
+
+   <h1>{{color}}</h1>
+
 </div>
 
 <script>
@@ -83,15 +91,20 @@
             }
             return { msg, changeMsg }
         },
+    
+                
         data() {
-         
+           
             return {
+               color:"Green",
+                number:7,
+                count:0,
                 src:"https://picsum.photos/200/300?grayscale",
                 title:"image",
                 link: "https://vuejs.org",
                 available: true,
                 message:"Hello World",
-                htmlElement:'<p style="color:red"> Hello again </p>',
+                htmlElement:'<h1 style="color:red"> Hello again </h1>',
                 condition:"conditions",
                 input:"Kacchi vai",
                 items:['a','b','c','d'],
@@ -133,18 +146,33 @@
         
         input_age:0,
         methods: {
+
+           
             click() {
                 // this.otherMsg = 'ok'     
                 this.msg = 'ok'
                 this.setvalue()    
             },
+
+            hello(){
+                alert("Hello world")
+            },
+
             setvalue(){
                 this.otherMsg='Rimi'
             },
 
             findStudent(){
-return this.student.filter((info)=>
-info.name == this.search)
+                if(this.search != ''){
+                    return this.student.filter((info)=>
+            info.age && info.name == this.search);
+                    
+                        
+                }
+                
+                else{
+                    return this.student
+                }
             },
 
 

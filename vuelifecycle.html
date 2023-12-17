@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 >Hello Mouly</h1>
+        <p>Kemon acho</p>
+        <h1 ref="count">{{number}}</h1>
+      <button v-on:click="number=number+1">Update Count</button>
+
+      <h2 ref="dismis">Destroy</h2>
+      <button v-on:click="show=!show">click</button>
+      <User v-if="show" /> 
+    </div>
+    <script>
+         const { ref } = Vue
+    const  app = Vue.createApp({
+        setup() {
+            
+        },
+
+        beforeCreate() {
+            alert("Khub sabdhan")
+            console.log("before create");
+        },
+
+        created() {
+            alert("yes created")
+            console.log("created");
+        },
+
+        beforeMount() {
+            console.warn("before mount", this.$el);
+        },
+
+        mounted() {
+            console.warn("mounted", this.$el);
+        },
+
+        beforeUpdate() {
+            console.log("before update", this.$refs['count'].textContent);
+        },
+
+        updated() {
+            console.log("update", this.$refs['count'].textContent);
+            
+        },
+
+        beforeUnmount() {
+            console.log("before unmount", this.$refs['dismis'].textContent);
+        },
+     
+        data() {
+            console.log("created");
+            return {
+                number:0,
+                show:true
+            }
+        },
+
+        methods: {
+       
+        },
+    })
+    app.mount('#app')
+    </script>
+</body>
+</html>
