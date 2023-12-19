@@ -36,8 +36,8 @@
                             Category
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a @click="singleproduct(category.id)" class="dropdown-item" v-for="category in categories"
-                                :key="category" href="#">{{category}}</a>
+                            <a @click="getSpecificcategory(category)" class="dropdown-item"
+                                v-for="category in categories" :key="category" href="#">{{category}}</a>
 
                         </div>
                     </li>
@@ -51,14 +51,14 @@
                 </form>
             </div>
         </nav>
-        <!-- card design  -->
-        <div class="row">
+        <!--  all product card design  -->
+        <div class="row" v-if="singleproduct_show">
             <div class="col-md-4" v-for="product in products">
                 <div class="card">
                     <img class="card-img-top" :src="product.image" width="" height="" alt="Card image cap">
 
                     <div class="card-body">
-                        <a href="">
+                        <a href="#" @click="singleproducts(product.id)">
                             <h5 class="card-title">{{product.title}}</h5>
                         </a>
                         <p class="card-text">{{product.description}}</p>
@@ -68,6 +68,17 @@
                         </p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- single product card -->
+        <div class="card" style="width: 18rem;" v-if="!singleproduct_show">
+            
+            <img class="card-img-top" :src="singleproductshow.image" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{singleproductshow.title}}</h5>
+                <p class="card-text">{{singleproductshow.description}}</p>
+                <small>price:{{singleproductshow.price}}</small>
             </div>
         </div>
     </div>
@@ -85,9 +96,9 @@
                 products: [],
                 categories: [],
                 specificategory: [],
-                singleproduct: '',
-                product_show: true,
 
+                singleproduct_show: true,
+                singleproductshow: {}
 
             };
         },
@@ -95,33 +106,38 @@
             getdata() {
                 // console.log("hit");
                 axios.get('https://fakestoreapi.com/products').then(res => {
-                    console.log(res);
+                    // console.log(res);
                     this.products = res.data;
                 });
             },
 
             getcategory() {
                 axios.get('https://fakestoreapi.com/products/categories').then(res => {
-                    console.log(res);
+                    // console.log(res);
                     this.categories = res.data;
                 });
             },
+            // category wise data
 
             getSpecificcategory(category) {
                 let data = category;
+                //  console.log(data);
                 axios.get('https://fakestoreapi.com/products/category/' + data).then((res) => {
                     this.specificategory = res.data;
-                    console.log(res);
+                    // console.log(res);
                     this.products = res.data;
+                    // console.log(this.products);
                 });
             },
 
             singleproducts(product_id) {
+                this.singleproduct_show = false;
                 let id = product_id;
+                // console.log(id);
                 axios.get('https://fakestoreapi.com/products/' + id).then((res) => {
-                    this.singleproduct = res.data;
-                    console.log(res);
-
+                    this.singleproductshow = res.data;
+                    console.log('product', res);
+                    console.log(this.singleproductshow);
                 });
             },
 
