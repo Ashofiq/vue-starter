@@ -12,3 +12,6 @@
 
 # Auth API 
 - https://dummyjson.com/docs/auth
+
+# How To Install Vue 3 In Laravel 10 With Vite
+- https://www.linkedin.com/pulse/how-install-vue-3-laravel-10-vite-mahmoud-adel
